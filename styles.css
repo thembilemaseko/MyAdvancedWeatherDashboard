@@ -1,56 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Advanced Weather Dashboard</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #ffffff;
+}
 
-<header>
-  <h1>🌦️ Weather Dashboard</h1>
-  <button id="themeToggle">🌙</button>
-</header>
+body.light {
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --text: #000000;
+}
 
-<section class="controls">
-  <input type="text" id="cityInput" placeholder="Enter city...">
-  <button id="searchBtn">Search</button>
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial;
+  padding: 20px;
+  transition: 0.3s;
+}
 
-  <select id="tempType">
-    <option value="max">Max Temp</option>
-    <option value="min">Min Temp</option>
-  </select>
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  <button id="refreshBtn">Refresh</button>
-</section>
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
 
-<div id="loader" class="loader hidden"></div>
+input, select, button {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+}
 
-<section class="cards">
-  <div class="card">
-    <h3>Temperature</h3>
-    <p id="currentTemp">--°C</p>
-  </div>
-  <div class="card">
-    <h3>Wind Speed</h3>
-    <p id="windSpeed">-- km/h</p>
-  </div>
-  <div class="card">
-    <h3>Location</h3>
-    <p id="locationName">--</p>
-  </div>
-</section>
+button {
+  cursor: pointer;
+  background: #38bdf8;
+  color: white;
+}
 
-<section class="chart-container">
-  <canvas id="tempChart"></canvas>
-</section>
+.cards {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-<section class="chart-container">
-  <canvas id="windChart"></canvas>
-</section>
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 12px;
+  width: 180px;
+  text-align: center;
+}
 
-<script src="script.js"></script>
-</body>
-</html>
+.chart-container {
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+/* Loader */
+.loader {
+  border: 5px solid #ccc;
+  border-top: 5px solid #38bdf8;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin: 20px auto;
+  animation: spin 1s linear infinite;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
