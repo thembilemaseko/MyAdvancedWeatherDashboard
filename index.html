@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Weather Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>🌦️ Weather Dashboard</h1>
+  <button id="themeToggle">🌙</button>
+</header>
+
+<section class="controls">
+  <input type="text" id="cityInput" placeholder="Enter city...">
+  <button id="searchBtn">Search</button>
+
+  <select id="tempType">
+    <option value="max">Max Temp</option>
+    <option value="min">Min Temp</option>
+  </select>
+
+  <button id="refreshBtn">Refresh</button>
+</section>
+
+<div id="loader" class="loader hidden"></div>
+
+<section class="cards">
+  <div class="card">
+    <h3>Temperature</h3>
+    <p id="currentTemp">--°C</p>
+  </div>
+  <div class="card">
+    <h3>Wind Speed</h3>
+    <p id="windSpeed">-- km/h</p>
+  </div>
+  <div class="card">
+    <h3>Location</h3>
+    <p id="locationName">--</p>
+  </div>
+</section>
+
+<section class="chart-container">
+  <canvas id="tempChart"></canvas>
+</section>
+
+<section class="chart-container">
+  <canvas id="windChart"></canvas>
+</section>
+  <footer>
+    Coded by <a href="#" target="_blank">Thembile Maseko</a> on <a href="#" target_blank">Github</a>hosted on <a href="#" target="_blank">Netlify</a> 
+  </footer>
+
+<script src="script.js"></script>
+</body>
+</html>
